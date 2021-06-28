@@ -35,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(this);
 
+        getJsonObjectRequest(queue);
+
+
+        getJsonArrayRequest(queue);
+
+        getStringRequest(queue);
+
+    }
+
+    private void getJsonObjectRequest(RequestQueue queue) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, apiUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -54,13 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        queue.add(jsonObjectRequest);
-
-
-        getJsonArrayRequest(queue);
-
-        getStringRequest(queue);
-
+        ;queue.add(jsonObjectRequest);
     }
 
     private void getStringRequest(RequestQueue queue) {
