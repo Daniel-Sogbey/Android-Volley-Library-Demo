@@ -33,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
         text = findViewById(R.id.text);
 
-        queue = Volley.newRequestQueue(this);
+        queue = MySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
+
+       // queue = Volley.newRequestQueue(this);
 
         getJsonObjectRequest(queue);
 
 
-        getJsonArrayRequest(queue);
+       // getJsonArrayRequest(queue);
 
         getStringRequest(queue);
 
@@ -64,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ;queue.add(jsonObjectRequest);
+        ;//queue.add(jsonObjectRequest);
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 
     private void getStringRequest(RequestQueue queue) {
@@ -82,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        queue.add(stringRequest);
+        //queue.add(stringRequest);
+        MySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     private void getJsonArrayRequest(RequestQueue queue) {
@@ -109,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        queue.add(jsonArrayRequest);
+        //queue.add(jsonArrayRequest);
+        MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest);
     }
 
 
